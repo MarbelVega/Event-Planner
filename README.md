@@ -9,7 +9,7 @@ Once Installed, in the project directory, run `live-server`.
 
 Your server is now running.
 
-Demo of the web app:
+Screenshot of the web app:
 
 <img src="https://github.com/hasahmad/Event-Planner/blob/master/Screenshot.png" height="400px" alt="Screenshot of the App" />
 
