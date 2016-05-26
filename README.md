@@ -11,5 +11,5 @@ Your server is now running.
 
 Demo of the web app:
 
-<img src="" height="400px" />
+<img src="https://github.com/hasahmad/Event-Planner/blob/master/Screenshot.png" height="400px" alt="Screenshot of the App" />
 
