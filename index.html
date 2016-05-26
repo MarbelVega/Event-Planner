@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Meet-Up Event Planner</title>
+	<!--Google Icon Font-->
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<!-- Materialize CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css" media="screen,projection"/>
+	<link rel="stylesheet" href="css/jquery.datetimepicker.css">
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+	<div class="container">
+		<h2>Meet-Up Event Planner</h2>
+		<hr>
+		<p class="flow-text">Welcome to Meet-Up Event Planner. In-order to Create an Event, you first need to Sign-Up.</p>
+		<div class="row z-depth-1">
+		    <div class="col s12">
+		      <ul class="tabs">
+		        <li class="tab col s3"><a href="#signup">Sign-up</a></li>
+		        <li class="tab col s3"><a href="#create-event">Create Events</a></li>
+		        <li class="tab col s3"><a href="#view-event">View Events <sup><span id="badge"></span></sup></a></li>
+		      </ul>
+		    </div>
+		    
+		    <!-- Create An Event -->
+		    <div id="signup" class="col s12">
+		    	<h4>Sign-up</h4>
+				<br>
+				<div class="row">
+					<form class="col s12" id="signup-form" action="javascript:void(0)" method="post">
+					  <div class="row">
+					    <div class="input-field col s6">
+					      <input placeholder="First Name" id="first_name" type="text" class="validate" autocomplete="">
+					      <label for="first_name">First Name</label>
+					    </div>
+					    <div class="input-field col s6">
+					      <input placeholder="Last Name" id="last_name" type="text" class="validate" autocomplete="">
+					      <label for="last_name">Last Name</label>
+					    </div>
+					  </div>
+					  <div class="row">
+					    <div class="input-field col s12">
+					      <input id="email" type="email" class="validate" autocomplete="">
+					      <label for="email">Email</label>
+					    </div>
+					  </div>
+					  <div class="row">
+					    <div class="input-field col s12">
+					      <input id="password" type="password" class="validate">
+					      <label for="password">Password</label>
+					    </div>
+					  </div>
+					  <div class="row">
+					  	<div class="input-fiels col s12">
+					  		<textarea id="about" name="about" class="materialize-textarea" autocomplete=""></textarea>
+							<label for="about">(Optional) public biographical information (such as employer, job title, birthday, etc)</label>
+					  	</div>
+					  </div>
+					  <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+					    <i class="material-icons right">send</i>
+					  </button>
+					</form>
+				</div>
+		    </div>
+
+		    <!-- Create An Event -->
+		    <div class="col s12" id="create-event">
+				<h4>Create an Event</h4>
+				<br>
+				<div class="row">
+					<form class="col s12" id="create_event" action="javascript:void(0)" method="post">
+					  <div class="row">
+					    <div class="input-field col s6">
+					      <input placeholder="Name of the event" id="eventName" type="text" class="validate" length="20" maxlength="20" autocomplete="">
+					      <label for="eventName">Name of the event</label>
+					    </div>
+					    <div class="input-field col s6">
+					      <input id="eventType" list="eventTypes" class="validate" autocomplete="" placeholder="Type of the event">
+					      <datalist id="eventTypes" class="hide">
+							<option value="Birthday Party">Birthday Party</option>
+							<option value="Conference Talk">Conference Talk</option>
+							<option value="Wedding">Wedding</option>
+						  </datalist>
+						  <!-- <label for="eventType">Type of the event</label> -->
+					    </div>
+					  </div>
+					  <div class="row">
+					    <div class="input-field col s12">
+					      <input placeholder="Event host" id="eventHost" type="text" class="validate" autocomplete="">
+					      <label for="eventHost">Event host (could be an individual’s name or an organization)</label>
+					    </div>
+					  </div>
+					  <div class="row">
+					    <div class="input-field col s6">
+					      <input type="text" id="start_datetimepicker" placeholder="Event start date and time">
+					    </div>
+					    <div class="input-field col s6">
+					      <input type="text" id="end_datetimepicker" placeholder="Event End date and time">
+					    </div>
+					  </div>
+					  <div class="row">
+					    <div class="input-field col s12">
+					      <input placeholder="Guest List" list="guestList" id="guest-list" type="text" class="validate" autocomplete="">
+					      <datalist id="guestList" class="hide">
+							<option value="Guest 1">Guest 1</option>
+							<option value="Guest 2">Guest 2</option>
+							<option value="Guest 3">Guest 3</option>
+						  </datalist>
+					    </div>
+					  </div>
+					  <div class="row">
+					    <div class="input-field col s12">
+					      <input placeholder="Location of the Event" id="location" type="text" class="validate" autocomplete="">
+					      <label for="location">Location</label>
+					    </div>
+					  </div>
+					  <div class="row">
+					  	<div class="input-fiels col s12">
+					  	   <textarea id="message" name="message" class="materialize-textarea" autocomplete="" placeholder="Type a message to the guests with additional information about the event"></textarea>
+						   <label for="message">(Optional) message to the guests with additional information about the event</label>
+					  	</div>
+					  </div>
+					  
+					  <button class="btn waves-effect waves-light" type="submit" name="action" id="btnCreateEvent">Create Event
+					    <i class="material-icons right">send</i>
+					  </button>
+					</form>
+				</div>
+		    </div>
+			
+			<div class="col s12" id="view-event" style="margin-bottom:10px;">
+				<h4>Events Details</h4>
+				<br>
+				<table class="striped" id="events">
+			        <thead>
+			          <tr>
+			              <th data-field="name_">Event Name</th>
+			              <th data-field="type_">Event Type</th>
+			              <th data-field="host_">Event Host</th>
+			              <th data-field="start_">Start Date & Time</th>
+			              <th data-field="end_">End Date & Time</th>
+			              <th data-field="guest_">Guest list</th>
+			              <th data-field="location_">Location</th>
+			          </tr>
+			        </thead>
+			        <tbody>
+			        </tbody>
+			      </table>
+			</div>
+		  </div>
+		
+	</div>
+        
+        
+	<!-- jQuery and Materialize JS -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="js/firebase.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+	<script src="js/jquery.datetimepicker.full.min.js"></script>
+	<script src="js/scripts.js"></script>
+	<script src="js/events.js"></script>
+	<script src="js/firebase_events.js"></script>
+</body>
+</html>
